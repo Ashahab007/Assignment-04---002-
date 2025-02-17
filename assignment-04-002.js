@@ -127,5 +127,27 @@ SAMPLE INPUT	SAMPLE OUTPUT
 */
 
 function willSuccess(marks) {
-  // You have to write your code here
+  if (Array.isArray(marks)) {
+    let max = [];
+    let min = [];
+    for (const number of marks) {
+      if (number >= 50) {
+        max.push(number);
+      } else {
+        min.push(number);
+      }
+    }
+    if (max.length > min.length) {
+      return true;
+    } else if (max.length === min.length) {
+      return false;
+    } else {
+      return false;
+    }
+  } else {
+    return "Invalid";
+  }
 }
+
+let result = willSuccess([60, 70, 80, 40, 30]);
+console.log(result);
