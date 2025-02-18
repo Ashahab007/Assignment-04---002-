@@ -149,7 +149,7 @@ function willSuccess(marks) {
   }
 }
 
-let result = willSuccess(90);
+let result = willSuccess([60, 70, 80, 40, 30]);
 console.log(result);
 
 // ! Problem-04:
@@ -208,8 +208,8 @@ function validProposal(person1, person2) {
 }
 
 let getProposal = validProposal(
-  { name: "kader", gender: "male", age: 25 },
-  { name: "toya", gender: "female", age: 20 }
+  { name: "sumi", gender: "female", age: 25 },
+  { name: "toya", gender: "female", age: 24 }
 );
 console.log(getProposal);
 
@@ -279,5 +279,5 @@ function calculateSleepTime(times) {
   }
 }
 
-let amountOfSleep = calculateSleepTime(90);
+let amountOfSleep = calculateSleepTime([1000, 499, 519, 300]);
 console.log(amountOfSleep);

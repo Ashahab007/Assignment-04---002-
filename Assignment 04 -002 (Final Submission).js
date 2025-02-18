@@ -12,7 +12,7 @@ function validContact(contact) {
   if (typeof contact === "string") {
     if (
       contact.length === 11 &&
-      contact.startsWith("01") &&
+      contact.slice(0, 2) === "01" &&
       !contact.includes(" ")
     ) {
       return true;
@@ -61,19 +61,20 @@ function validProposal(person1, person2) {
 }
 
 function calculateSleepTime(times) {
-  let typeCheck = times.every(function checkType(val) {
-    return typeof val === "number";
-  });
-  if (Array.isArray(times) && typeCheck) {
+  if (Array.isArray(times)) {
+    for (const time of times) {
+      if (typeof time !== "number") {
+        return "Invalid";
+      }
+    }
     let total = 0;
     for (const time of times) {
       total += time;
     }
-    let miliSec = total * 1000;
-    let date = new Date(miliSec);
-    let hours = Math.floor(miliSec / 3600 / 1000);
-    let minutes = date.getMinutes();
-    let seconds = date.getSeconds();
+
+    let hours = Math.floor(total / 3600);
+    let minutes = Math.floor((total % 3600) / 60);
+    let seconds = total % 60;
     let totaTime = {};
     totaTime.hour = hours;
     totaTime.minute = minutes;
