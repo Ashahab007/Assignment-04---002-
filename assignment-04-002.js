@@ -39,7 +39,7 @@ function calculateVAT(price) {
   }
 }
 
-let productVat = calculateVAT("foo");
+let productVat = calculateVAT("101");
 console.log(productVat);
 
 //! Problem-02 :
@@ -79,7 +79,7 @@ function validContact(contact) {
   if (typeof contact === "string") {
     if (
       contact.length === 11 &&
-      contact.startsWith("01") &&
+      contact.slice(0, 2) === "01" &&
       !contact.includes(" ")
     ) {
       return true;
@@ -91,7 +91,7 @@ function validContact(contact) {
   }
 }
 
-let inputNum = validContact(true);
+let inputNum = validContact("01819234567");
 console.log(inputNum);
 
 // ! Problem-03 :
@@ -246,19 +246,24 @@ SAMPLE INPUT	SAMPLE OUTPUT
 */
 
 function calculateSleepTime(times) {
-  let typeCheck = times.every(function checkType(val) {
-    return typeof val === "number";
-  });
-  if (Array.isArray(times) && typeCheck) {
+  if (Array.isArray(times)) {
+    /* let typeCheck = times.every(function checkType(val) {
+        return typeof val === "number";
+      }); */
+    for (const time of times) {
+      if (typeof time !== "number") {
+        return "Invalid";
+      }
+    }
     let total = 0;
     for (const time of times) {
       total += time;
     }
-    let miliSec = total * 1000;
-    let date = new Date(miliSec);
-    let hours = Math.floor(miliSec / 3600 / 1000);
-    let minutes = date.getMinutes();
-    let seconds = date.getSeconds();
+    // let miliSec = total * 1000;
+    // let date = new Date(miliSec);
+    let hours = Math.floor(total / 3600);
+    let minutes = Math.floor((total % 3600) / 60);
+    let seconds = total % 60;
     let totaTime = {};
     totaTime.hour = hours;
     totaTime.minute = minutes;
@@ -274,5 +279,5 @@ function calculateSleepTime(times) {
   }
 }
 
-let amountOfSleep = calculateSleepTime([1000, 2000, 725]);
+let amountOfSleep = calculateSleepTime(90);
 console.log(amountOfSleep);
