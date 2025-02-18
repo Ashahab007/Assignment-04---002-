@@ -39,7 +39,7 @@ function calculateVAT(price) {
   }
 }
 
-let productVat = calculateVAT(-500);
+let productVat = calculateVAT("foo");
 console.log(productVat);
 
 //! Problem-02 :
@@ -91,7 +91,7 @@ function validContact(contact) {
   }
 }
 
-let inputNum = validContact("01819234567");
+let inputNum = validContact(true);
 console.log(inputNum);
 
 // ! Problem-03 :
@@ -149,7 +149,7 @@ function willSuccess(marks) {
   }
 }
 
-let result = willSuccess([55, 75, 41, 33, 0, 87, 91, 30]);
+let result = willSuccess(90);
 console.log(result);
 
 // ! Problem-04:
@@ -208,8 +208,8 @@ function validProposal(person1, person2) {
 }
 
 let getProposal = validProposal(
-  { name: "shuvo", gender: "male", age: 20 },
-  { name: "joy", gender: "male", age: 25 }
+  { name: "kader", gender: "male", age: 25 },
+  { name: "toya", gender: "female", age: 20 }
 );
 console.log(getProposal);
 
@@ -246,7 +246,7 @@ SAMPLE INPUT	SAMPLE OUTPUT
 */
 
 function calculateSleepTime(times) {
-  let typeCheck = times.every(function (val) {
+  let typeCheck = times.every(function checkType(val) {
     return typeof val === "number";
   });
   if (Array.isArray(times) && typeCheck) {
@@ -259,15 +259,20 @@ function calculateSleepTime(times) {
     let hours = Math.floor(miliSec / 3600 / 1000);
     let minutes = date.getMinutes();
     let seconds = date.getSeconds();
-    return {
+    let totaTime = {};
+    totaTime.hour = hours;
+    totaTime.minute = minutes;
+    totaTime.second = seconds;
+    return totaTime;
+    /* {
       hour: hours,
       minute: minutes,
       second: seconds,
-    };
+    }; */
   } else {
     return "Invalid";
   }
 }
 
-let amountOfSleep = calculateSleepTime([1000, 499, 519, 300]);
+let amountOfSleep = calculateSleepTime([1000, 2000, 725]);
 console.log(amountOfSleep);
