@@ -48,8 +48,8 @@ function willSuccess(marks) {
 }
 
 function validProposal(person1, person2) {
-  let ageDifference = Math.abs(person1.age - person2.age);
   if (typeof person1 === "object" && typeof person2 === "object") {
+    let ageDifference = Math.abs(person1.age - person2.age);
     if (person1.gender !== person2.gender && ageDifference <= 7) {
       return true;
     } else {
@@ -71,7 +71,6 @@ function calculateSleepTime(times) {
     for (const time of times) {
       total += time;
     }
-
     let hours = Math.floor(total / 3600);
     let minutes = Math.floor((total % 3600) / 60);
     let seconds = total % 60;

@@ -91,7 +91,7 @@ function validContact(contact) {
   }
 }
 
-let inputNum = validContact("01819234567");
+let inputNum = validContact("02145678900");
 console.log(inputNum);
 
 // ! Problem-03 :
@@ -195,8 +195,8 @@ SAMPLE INPUT	SAMPLE OUTPUT
 */
 
 function validProposal(person1, person2) {
-  let ageDifference = Math.abs(person1.age - person2.age);
   if (typeof person1 === "object" && typeof person2 === "object") {
+    let ageDifference = Math.abs(person1.age - person2.age);
     if (person1.gender !== person2.gender && ageDifference <= 7) {
       return true;
     } else {
@@ -208,8 +208,8 @@ function validProposal(person1, person2) {
 }
 
 let getProposal = validProposal(
-  { name: "sumi", gender: "female", age: 25 },
-  { name: "toya", gender: "female", age: 24 }
+  { name: "shuvo", gender: "male", age: 20 },
+  { name: "joy", gender: "male", age: 25 }
 );
 console.log(getProposal);
 
@@ -247,9 +247,6 @@ SAMPLE INPUT	SAMPLE OUTPUT
 
 function calculateSleepTime(times) {
   if (Array.isArray(times)) {
-    /* let typeCheck = times.every(function checkType(val) {
-        return typeof val === "number";
-      }); */
     for (const time of times) {
       if (typeof time !== "number") {
         return "Invalid";
@@ -259,8 +256,6 @@ function calculateSleepTime(times) {
     for (const time of times) {
       total += time;
     }
-    // let miliSec = total * 1000;
-    // let date = new Date(miliSec);
     let hours = Math.floor(total / 3600);
     let minutes = Math.floor((total % 3600) / 60);
     let seconds = total % 60;
@@ -269,15 +264,10 @@ function calculateSleepTime(times) {
     totaTime.minute = minutes;
     totaTime.second = seconds;
     return totaTime;
-    /* {
-      hour: hours,
-      minute: minutes,
-      second: seconds,
-    }; */
   } else {
     return "Invalid";
   }
 }
 
-let amountOfSleep = calculateSleepTime([1000, 499, 519, 300]);
+let amountOfSleep = calculateSleepTime([5600]);
 console.log(amountOfSleep);
